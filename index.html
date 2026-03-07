@@ -1,12 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Миний сайт</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Page</title>
+  <style>
+    /* General body styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    /* Navigation bar */
+    nav {
+      background-color: #1e90ff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    /* Hero section */
+    .hero {
+      background-color: #e0f7ff;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 48px;
+      color: #1e90ff;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #1e90ff;
+    }
+
+    section p {
+      font-size: 18px;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1e90ff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+  </style>
 </head>
-
 <body>
-<h1>Сайн байна уу</h1>
-<p>Энэ бол миний GitHub Pages сайт.</p>
-</body>
 
+  <!-- Navigation -->
+  <nav>
+    <a href="#home" class="logo">Team Name</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#robots">Robots</a></li>
+      <li><a href="#sponsors">Sponsors</a></li>
+      <li><a href="#blogs">Blogs</a></li>
+      <li><a href="#photos">Photos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero / Home section -->
+  <section id="home" class="hero">
+    <h1>Welcome to Our Team!</h1>
+    <p>We build amazing robots and share our journey with the world.</p>
+  </section>
+
+  <!-- Team section -->
+  <section id="team">
+    <h2>Our Team</h2>
+    <p>Meet the talented members behind our success.</p>
+  </section>
+
+  <!-- Robots section -->
+  <section id="robots">
+    <h2>Our Robots</h2>
+    <p>Check out the robots we have built and competed with.</p>
+  </section>
+
+  <!-- Sponsors section -->
+  <section id="sponsors">
+    <h2>Our Sponsors</h2>
+    <p>We are grateful for the support from our amazing sponsors.</p>
+  </section>
+
+  <!-- Blogs section -->
+  <section id="blogs">
+    <h2>Blogs</h2>
+    <p>Read about our latest projects, competitions, and team updates.</p>
+  </section>
+
+  <!-- Photos section -->
+  <section id="photos">
+    <h2>Photos</h2>
+    <p>See our gallery of events, competitions, and behind-the-scenes moments.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Team Name. All rights reserved.
+  </footer>
+
+</body>
 </html>
