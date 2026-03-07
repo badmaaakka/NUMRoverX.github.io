@@ -1,158 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NUM Rover Team</title>
   <style>
-    /* General body styles */
+    :root {
+      --primary: #4e0707;
+      --primary-dark: #2d0303;
+      --primary-light: #7a1212;
+      --bg: #0f0b0b;
+      --bg-soft: #171111;
+      --card: #1d1414;
+      --text: #f4eeee;
+      --muted: #c9b7b7;
+      --line: rgba(255,255,255,0.08);
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(rgba(15,11,11,0.88), rgba(15,11,11,0.94)),
+        radial-gradient(circle at top, rgba(78,7,7,0.45), transparent 45%);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    /* Navigation bar */
-    nav {
-      background-color: #1e90ff;
-      padding: 10px 20px;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 11, 11, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
     }
 
-    nav .logo {
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      text-decoration: none;
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--white);
     }
 
-    nav ul {
-      list-style: none;
+    .logo span {
+      color: #d59a9a;
+    }
+
+    .nav-links {
       display: flex;
-      margin: 0;
-      padding: 0;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
-    nav ul li {
-      margin-left: 20px;
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+      padding: 6px 8px;
+      border-radius: 6px;
     }
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
+    .nav-links a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
     }
 
-    nav ul li a:hover {
-      color: #ffd700;
-    }
-
-    /* Hero section */
+    /* Hero */
     .hero {
-      background-color: #e0f7ff;
-      text-align: center;
-      padding: 80px 20px;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(to right, rgba(15,11,11,0.92), rgba(15,11,11,0.45)),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(78, 7, 7, 0.35);
+      color: #f2d6d6;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: 48px;
-      color: #1e90ff;
+      font-size: clamp(2.7rem, 6vw, 5.4rem);
+      line-height: 1.05;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 .accent {
+      color: #d9aaaa;
     }
 
     .hero p {
-      font-size: 20px;
-      margin-top: 10px;
-      color: #555;
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 22px 0 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.18);
+      color: var(--white);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
     }
 
     /* Sections */
     section {
-      padding: 60px 20px;
+      padding: 90px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 12px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 35px;
+    }
+
+    /* About / Team */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stat {
+      background: rgba(78, 7, 7, 0.22);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 22px;
       text-align: center;
     }
 
-    section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #1e90ff;
+    .stat h3 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f5d7d7;
     }
 
-    section p {
-      font-size: 18px;
-      color: #555;
-      max-width: 800px;
-      margin: 0 auto;
+    .stat p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    /* Footer */
-    footer {
-      background-color: #1e90ff;
-      color: white;
-      padding: 20px;
+    /* Robots */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .robot-card,
+    .blog-card,
+    .photo-card,
+    .sponsor-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .robot-card img,
+    .blog-card img,
+    .photo-card img {
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 22px;
+    }
+
+    .card-body h3 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+    }
+
+    .card-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* Sponsors */
+    .sponsors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .sponsor-card {
+      padding: 26px 18px;
       text-align: center;
+      font-weight: 700;
+      color: #ecdada;
+      background: linear-gradient(180deg, rgba(78,7,7,0.28), rgba(255,255,255,0.02));
     }
 
+    /* Blogs */
+    .blog-card .meta {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+      color: #d7b0b0;
+      background: rgba(78,7,7,0.25);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    /* Photos */
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .photo-card img {
+      height: 260px;
+    }
+
+    /* Contact/Footer style area */
+    .footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      background: #0b0808;
+    }
+
+    .footer strong {
+      color: var(--white);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .two-col,
+      .grid-3,
+      .photos-grid,
+      .sponsors-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .hero-content {
+        padding: 70px 0;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        line-height: 1.15;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#home" class="logo">Team Name</a>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#robots">Robots</a></li>
-      <li><a href="#sponsors">Sponsors</a></li>
-      <li><a href="#blogs">Blogs</a></li>
-      <li><a href="#photos">Photos</a></li>
-    </ul>
-  </nav>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">NUM <span>ROVER</span></a>
 
-  <!-- Hero / Home section -->
-  <section id="home" class="hero">
-    <h1>Welcome to Our Team!</h1>
-    <p>We build amazing robots and share our journey with the world.</p>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#team">Team</a>
+        <a href="#robots">Robots</a>
+        <a href="#sponsors">Sponsors</a>
+        <a href="#blogs">Blogs</a>
+        <a href="#photos">Photos</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">Engineering • Robotics • Innovation</div>
+        <h1>EXPLORE <span class="accent">BEYOND</span> THE POSSIBLE</h1>
+        <p>
+          We are a student robotics team building advanced rover systems,
+          sharing our journey, and representing our school through innovation,
+          teamwork, and competition.
+        </p>
+        <div class="hero-buttons">
+          <a href="#team" class="btn btn-primary">Meet Our Team</a>
+          <a href="#robots" class="btn btn-outline">See Our Robots</a>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Team section -->
   <section id="team">
-    <h2>Our Team</h2>
-    <p>Meet the talented members behind our success.</p>
+    <div class="container">
+      <h2 class="section-title">About Our Team</h2>
+      <p class="section-text">
+        We are a passionate robotics team focused on designing and building
+        high-performance rover systems. Our mission is to learn, compete,
+        and push the limits of student engineering.
+      </p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Who We Are</h3>
+          <p>
+            Our team brings together students from different engineering
+            backgrounds to design mechanical systems, embedded control,
+            autonomous features, communication systems, and field-ready robots.
+          </p>
+          <p>
+            Through competitions and real-world projects, we improve our
+            technical skills, collaboration, and innovation mindset.
+          </p>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <h3>25+</h3>
+            <p>Team Members</p>
+          </div>
+          <div class="stat">
+            <h3>5</h3>
+            <p>Major Projects</p>
+          </div>
+          <div class="stat">
+            <h3>3</h3>
+            <p>Competitions</p>
+          </div>
+          <div class="stat">
+            <h3>100%</h3>
+            <p>Passion</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Robots section -->
   <section id="robots">
-    <h2>Our Robots</h2>
-    <p>Check out the robots we have built and competed with.</p>
+    <div class="container">
+      <h2 class="section-title">Our Robots</h2>
+      <p class="section-text">
+        A look at the rover platforms and robotic systems our team has built.
+      </p>
+
+      <div class="grid-3">
+        <article class="robot-card">
+          <img src="https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?auto=format&fit=crop&w=1200&q=80" alt="Robot 1">
+          <div class="card-body">
+            <h3>Rover Alpha</h3>
+            <p>
+              Built for rough terrain mobility with strong suspension,
+              remote control, and modular sensor integration.
+            </p>
+          </div>
+        </article>
+
+        <article class="robot-card">
+          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=80" alt="Robot 2">
+          <div class="card-body">
+            <h3>Rover Beta</h3>
+            <p>
+              Focused on improved stability, embedded control systems,
+              and mission-oriented robotic operation.
+            </p>
+          </div>
+        </article>
+
+        <article class="robot-card">
+          <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=1200&q=80" alt="Robot 3">
+          <div class="card-body">
+            <h3>Rover Gamma</h3>
+            <p>
+              Designed for future autonomy upgrades, camera systems,
+              and terrain exploration experiments.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <!-- Sponsors section -->
   <section id="sponsors">
-    <h2>Our Sponsors</h2>
-    <p>We are grateful for the support from our amazing sponsors.</p>
+    <div class="container">
+      <h2 class="section-title">Sponsors</h2>
+      <p class="section-text">
+        We are grateful for the organizations and supporters who help our team grow.
+      </p>
+
+      <div class="sponsors-grid">
+        <div class="sponsor-card">Sponsor One</div>
+        <div class="sponsor-card">Sponsor Two</div>
+        <div class="sponsor-card">Sponsor Three</div>
+        <div class="sponsor-card">Sponsor Four</div>
+      </div>
+    </div>
   </section>
 
-  <!-- Blogs section -->
   <section id="blogs">
-    <h2>Blogs</h2>
-    <p>Read about our latest projects, competitions, and team updates.</p>
+    <div class="container">
+      <h2 class="section-title">Latest Blogs</h2>
+      <p class="section-text">
+        Team updates, development stories, competition experiences, and project progress.
+      </p>
+
+      <div class="grid-3">
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Blog 1">
+          <div class="card-body">
+            <span class="meta">March 2026</span>
+            <h3>How We Designed Our New Rover Chassis</h3>
+            <p>
+              A behind-the-scenes look at the design choices, tradeoffs,
+              and testing process behind our latest build.
+            </p>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80" alt="Blog 2">
+          <div class="card-body">
+            <span class="meta">February 2026</span>
+            <h3>Embedded Systems Integration Week</h3>
+            <p>
+              Our team worked on motor control, sensor data, and communication
+              testing to prepare for the next milestone.
+            </p>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1200&q=80" alt="Blog 3">
+          <div class="card-body">
+            <span class="meta">January 2026</span>
+            <h3>Competition Preparation and Team Training</h3>
+            <p>
+              From driver practice to hardware checks, here is how we prepared
+              for our upcoming robotics event.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <!-- Photos section -->
   <section id="photos">
-    <h2>Photos</h2>
-    <p>See our gallery of events, competitions, and behind-the-scenes moments.</p>
+    <div class="container">
+      <h2 class="section-title">Photo Gallery</h2>
+      <p class="section-text">
+        Moments from our workshops, build sessions, testing days, and competitions.
+      </p>
+
+      <div class="photos-grid">
+        <article class="photo-card">
+          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80" alt="Team workshop">
+        </article>
+        <article class="photo-card">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Team build">
+        </article>
+        <article class="photo-card">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Team competition">
+        </article>
+      </div>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2026 Team Name. All rights reserved.
+  <footer class="footer">
+    <div class="container">
+      <p><strong>NUM Rover Team</strong> © 2026. All rights reserved.</p>
+    </div>
   </footer>
 
 </body>
